@@ -4,17 +4,8 @@ import {calculateTimeDifferenceInMinutes} from '../utils';
 
 const RenderRowContent = channel => {
   const {epg} = channel;
-  console.log('epg:::', epg);
   return (
-    <View
-      key={channel?.id}
-      style={{
-        borderWidth: 1,
-        height: 79,
-        borderColor: '#E8E5EC',
-        flexDirection: 'row',
-        backgroundColor: 'white',
-      }}>
+    <View key={channel?.id} style={styles.viewRow}>
       {epg.map(renderCell)}
     </View>
   );
@@ -25,24 +16,14 @@ const renderCell = item => {
     item?.startTime,
     item?.endTime,
   );
-  const cellWidth = Math.floor(totalMinutes / 30);
+  const cellWidth = totalMinutes * 3;
   return (
-    <View
-      key={`${item?.id}`}
-      style={{
-        width: 3 * totalMinutes,
-        borderRightWidth: 1,
-        borderColor: '#E8E5EC',
-      }}>
-      <Text
-        style={{fontSize: 14, paddingHorizontal: 5, paddingTop: 8}}
-        numberOfLines={1}>
+    <View key={`${item?.id}`} style={styles.viewCell(cellWidth)}>
+      <Text style={styles.title} numberOfLines={1}>
         {item?.title}
       </Text>
-      <Text
-        style={{fontSize: 14, paddingHorizontal: 5, paddingTop: 16}}
-        numberOfLines={1}>
-        {`${totalMinutes} min`}
+      <Text style={styles.title} numberOfLines={1}>
+        {`${totalMinutes} m`}
       </Text>
     </View>
   );
@@ -50,4 +31,18 @@ const renderCell = item => {
 
 export default RenderRowContent;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  viewRow: {
+    borderWidth: 1,
+    height: 79,
+    borderColor: '#E8E5EC',
+    flexDirection: 'row',
+    backgroundColor: 'white',
+  },
+  viewCell: cellWidth => ({
+    width: cellWidth,
+    borderRightWidth: 1,
+    borderColor: '#E8E5EC',
+  }),
+  title: {fontSize: 14, paddingHorizontal: 5, paddingTop: 8},
+});

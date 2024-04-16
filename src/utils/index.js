@@ -44,3 +44,15 @@ export function calculateTimeDifferenceInMinutes(epoch1, epoch2) {
 
   return totalMinutes;
 }
+
+export function calculateAutoScrollLength() {
+  // Calculate the total minutes
+  const date = new Date();
+  const hours = date.getHours().toString().padStart(2, '0'); // Ensure 2-digit format
+  const minutes = date.getMinutes().toString().padStart(2, '0'); // Ensure 2-digit format
+  const time = `${hours}:${minutes}`;
+  const [hrs, mins] = time.split(':').map(Number);
+  console.log('time::');
+  const totalMinutes = hrs * 60 + 30 * Math.floor(mins / 30);
+  return totalMinutes * 3;
+}
