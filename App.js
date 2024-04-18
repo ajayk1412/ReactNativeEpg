@@ -25,11 +25,13 @@ const App = () => {
     scrollViewRef.current.scrollTo({x: scrollX + pixels});
   };
   const {channelList} = channels;
-  console.log('channels:::', channelList);
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.vertical} removeClippedSubviews>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.vertical}
+        removeClippedSubviews>
         <View>
           <DateHeader />
           {channelList.map(renderRowHeader)}
