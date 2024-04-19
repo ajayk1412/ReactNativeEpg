@@ -2,7 +2,6 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
 const RenderRowHeader = channel => {
-  console.log('props:::', channel);
   return (
     <View
       key={channel?.id}
