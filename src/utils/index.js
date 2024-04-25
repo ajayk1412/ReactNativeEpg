@@ -50,7 +50,6 @@ export function calculateAutoScrollLength() {
   const minutes = date.getMinutes().toString().padStart(2, '0'); // Ensure 2-digit format
   const time = `${hours}:${minutes}`;
   const [hrs, mins] = time.split(':').map(Number);
-  console.log('time::');
   const totalMinutes = hrs * 60 + 30 * Math.floor(mins / 30);
   return totalMinutes * 3;
 }

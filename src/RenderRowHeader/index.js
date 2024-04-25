@@ -3,26 +3,12 @@ import React from 'react';
 
 const RenderRowHeader = channel => {
   return (
-    <View
-      key={channel?.id}
-      style={{
-        borderWidth: 1,
-        alignItems: 'center',
-        width: 80,
-        paddingVertical: 5,
-        borderColor: '#E8E5EC',
-        backgroundColor: 'white',
-      }}>
+    <View key={channel?.id} style={styles.vwContainer}>
       <Image
         source={{
           uri: channel?.thumbnailImage,
         }}
-        style={{
-          width: 50,
-          height: 50,
-          backgroundColor: 'grey',
-          borderRadius: 50,
-        }}
+        style={styles.imgStyle}
       />
 
       <Text>{channel?.channelNumber}</Text>
@@ -32,4 +18,19 @@ const RenderRowHeader = channel => {
 
 export default RenderRowHeader;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  vwContainer: {
+    borderWidth: 1,
+    alignItems: 'center',
+    width: 80,
+    paddingVertical: 5,
+    borderColor: '#E8E5EC',
+    backgroundColor: 'white',
+  },
+  imgStyle: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'grey',
+    borderRadius: 50,
+  },
+});
